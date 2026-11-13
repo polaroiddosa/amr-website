@@ -161,6 +161,23 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .notch-list li:last-child, .ledger-list li:last-child { border-bottom: 1px solid var(--rule); }
 .notch-list li::before, .ledger-list li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: 9px; height: 11px; background: var(--navy); clip-path: polygon(51% 0, 100% 100%, 0 100%); }
 
+/* Slant figure: an illustration (or later a photograph) cropped on the Slant, never in a circle or arch.
+   The left edge leans at the mark's own angle, top-left to bottom-right. Red inside it is the page's one flag. */
+.fig-section { padding-block: 0 clamp(40px, 6vw, 72px); }
+.page-head + .fig-section { padding-top: 24px; }
+/* One strong Slant cut per page: where the figure follows the page head, the figure is the cut */
+.page-head:has(+ .fig-section)::after { display: none; }
+.page-head:has(+ .fig-section) > .wrap { padding-right: 0; }
+.slant-fig {
+  --fh: clamp(170px, 24vw, 280px);
+  margin: 0; height: var(--fh); background: var(--navy); overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, calc(var(--fh) * var(--slant)) 100%);
+}
+.slant-fig svg, .slant-fig img.photo { display: block; width: 100%; height: 100%; }
+.slant-fig img.photo { object-fit: cover; }
+.slant-fig text { font-family: "Space Grotesk", Arial, sans-serif; font-variant-numeric: tabular-nums; }
+.flag.lead { color: var(--navy); }
+
 /* Process */
 .process { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 3px solid var(--navy); }
 .process li { padding: 20px 0 20px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; }
