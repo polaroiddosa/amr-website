@@ -1,4 +1,4 @@
-// Menu toggle and the WhatsApp enquiry. No tracking, nothing is sent anywhere by this script.
+// Menu toggle, FAQ (one answer open at a time) and the WhatsApp enquiry. No tracking, nothing is sent anywhere by this script.
 (function () {
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -15,6 +15,16 @@
       }
     });
   }
+
+  // FAQ: the name="faq" attribute already makes browsers keep one answer open; this does the same
+  // for older browsers that ignore it.
+  var faqs = document.querySelectorAll('.faq details');
+  faqs.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      faqs.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
 
   var form = document.getElementById('enquiry');
   if (!form) return;

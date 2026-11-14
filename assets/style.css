@@ -276,3 +276,36 @@ address { font-style: normal; }
   .js .site-nav a:hover { border-bottom-color: var(--rule); }
   .js .site-nav a[aria-current="page"] { border-bottom-color: var(--navy); }
 }
+
+/* Service icons (icons.py, guidelines p.21: solid navy shapes; no red, the one flag per page is the label) */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon { display: block; width: 36px; height: 36px; fill: var(--navy); flex: none; }
+.row-lead { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+@media (min-width: 760px) {
+  .icon { width: 44px; height: 44px; }
+  .ledger-row { grid-template-columns: 128px minmax(0, 1fr); }
+  .ledger-row .row-lead { flex-direction: row; align-items: center; gap: 16px; }
+  .ledger-row .row-lead .folio-no { width: 40px; padding-top: 0; }
+  .service .icon { width: 48px; height: 48px; }
+}
+
+/* Motion: calm and short, never needed to read the page. Everything below is skipped when the visitor's device
+   asks for reduced motion, and the scroll reveal only runs in browsers that support scroll-driven animations. */
+@keyframes slant-in { from { transform: translateX(56px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes slant-in-skew { from { transform: translateX(80px) skewX(25.5deg); opacity: 0; } to { transform: skewX(25.5deg); opacity: 1; } }
+@keyframes faq-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .hero-panel { animation: slant-in .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .page-head::after { animation: slant-in-skew .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .icon { transition: transform .25s ease-out; }
+  .ledger-row:hover .icon, .service:hover .icon { transform: translateX(4px); }
+  .faq summary::after { transition: transform .2s ease-out; }
+  .faq details[open] > p { animation: faq-in .28s ease-out; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: reveal-up linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+  }
+}
