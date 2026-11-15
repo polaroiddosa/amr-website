@@ -309,3 +309,21 @@ address { font-style: normal; }
     .reveal { animation: reveal-up linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
   }
 }
+
+/* 2026-11-15, client request: justified text where it reads as a paragraph */
+@media (min-width: 700px) { main p, main li { text-align: justify; hyphens: auto; -webkit-hyphens: auto; } }
+main .btn, main .flag, main .more, main .step-no, main .toc li, main .ledger-list li, main .row-lead { text-align: left; hyphens: manual; }
+main .lede { text-align: left; }
+.hero-text .lede { text-align: left; }
+
+/* Virtual CFO feature block and page */
+.feature { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 28px; border: 2px solid var(--navy, #0B1F4B); }
+.feature h2 { margin: 0 0 8px; }
+.vcfo-list { list-style: none; padding: 0; margin: 0 0 1.5em; }
+.vcfo-list li { padding: 16px 0; border-top: 1px solid var(--rule); }
+.vcfo-list li:first-child { border-top: 0; }
+.vcfo-list h3 { margin: 0 0 4px; }
+.vcfo-list p { margin: 0; }
+@media (min-width: 900px) { .feature { grid-template-columns: 72px 1fr; padding: 36px; } }
+main h1, main h2, main h3, main h4 { text-align: left; hyphens: manual; }
+main .lede, .page-head .lede { hyphens: manual; text-align: left; }
