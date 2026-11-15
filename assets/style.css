@@ -334,3 +334,4 @@ main .lede, .page-head .lede { hyphens: manual; text-align: left; }
 .photo-band figcaption { font-size: .8125rem; color: var(--ink-2); padding: 10px 0 0; text-align: left; }
 @media (min-width: 700px) { .site-footer .disclaimer { text-align: justify; hyphens: auto; -webkit-hyphens: auto; } }
 .site-footer a[href^="tel:"] { text-decoration: none; }
+.site-footer a, .site-footer a:hover, .site-footer a:focus-visible { text-decoration: none; }
