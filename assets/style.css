@@ -333,3 +333,4 @@ main .lede, .page-head .lede { hyphens: manual; text-align: left; }
 .photo-band img { display: block; width: 100%; height: clamp(220px, 34vw, 420px); object-fit: cover; object-position: 50% 78%; border-bottom: 4px solid var(--navy); }
 .photo-band figcaption { font-size: .8125rem; color: var(--ink-2); padding: 10px 0 0; text-align: left; }
 @media (min-width: 700px) { .site-footer .disclaimer { text-align: justify; hyphens: auto; -webkit-hyphens: auto; } }
+.site-footer a[href^="tel:"] { text-decoration: none; }
