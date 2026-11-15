@@ -327,3 +327,9 @@ main .lede { text-align: left; }
 @media (min-width: 900px) { .feature { grid-template-columns: 72px 1fr; padding: 36px; } }
 main h1, main h2, main h3, main h4 { text-align: left; hyphens: manual; }
 main .lede, .page-head .lede { hyphens: manual; text-align: left; }
+
+.photo-band { padding: 32px 0 0; }
+.photo-band figure { margin: 0 auto; }
+.photo-band img { display: block; width: 100%; height: clamp(220px, 34vw, 420px); object-fit: cover; object-position: 50% 78%; border-bottom: 4px solid var(--navy); }
+.photo-band figcaption { font-size: .8125rem; color: var(--ink-2); padding: 10px 0 0; text-align: left; }
+@media (min-width: 700px) { .site-footer .disclaimer { text-align: justify; hyphens: auto; -webkit-hyphens: auto; } }
