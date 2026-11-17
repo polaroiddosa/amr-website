@@ -338,3 +338,9 @@ main .lede, .page-head .lede { hyphens: manual; text-align: left; }
 
 /* 2026-11-15: service descriptions and step text in the main navy, not the lighter one, so nothing reads dull */
 .ledger-row p, .process p, .vcfo-list p { color: var(--navy); }
+
+/* 2026-11-17: photos cropped on the Slant (25.5 deg, top-left to bottom-right lean), local preview until approved */
+.slant-photo { padding: 32px 0 32px; }
+.slant-photo .wrap { --ph: clamp(200px, 30vw, 380px); }
+.slant-photo img { display: block; width: 100%; height: var(--ph); object-fit: cover; object-position: 50% 55%;
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--ph) * var(--slant)) 100%, 0 100%); }
