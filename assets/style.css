@@ -346,3 +346,5 @@ main .lede, .page-head .lede { hyphens: manual; text-align: left; }
   clip-path: polygon(0 0, 100% 0, calc(100% - var(--ph) * var(--slant)) 100%, 0 100%); }
 /* Contact page body: links without underline (client request, 2026-11-17) */
 .contact-grid a:not(.btn), .contact-grid a:not(.btn):hover, .contact-grid a:not(.btn):focus-visible { text-decoration: none; }
+/* Careers, Privacy, Terms: email links without underline (client request, 2026-11-17) */
+a.link[href^="mailto:"], a.link[href^="mailto:"]:hover, a.link[href^="mailto:"]:focus-visible { text-decoration: none; }
