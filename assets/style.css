@@ -381,3 +381,141 @@ a.link[href^="mailto:"], a.link[href^="mailto:"]:hover, a.link[href^="mailto:"]:
   .also-links { display: block; border-top: 1px solid var(--rule); }
   .also-links a { display: flex; width: 100%; padding-block: 6px; border-bottom: 1px solid var(--rule); }
 }
+
+/* ===== 2026-11-18 redesign: look refresh and interactive parts (Nandaprayag: "the site look like a pdf, more interactives, improve the look") =====
+   Brand rules kept (guidelines v0.3): navy, ivory, white; red untouched; no gradients or shadows on shapes; calm movement only. */
+[hidden] { display: none !important; }
+
+/* section backgrounds: the brand is about 70% navy, so navy sections now carry the page */
+.bg-white { background: var(--white); }
+.bg-navy { background: var(--navy); color: var(--ivory); }
+.bg-navy :focus-visible { outline-color: var(--ivory); }
+.bg-navy p, .bg-navy .note { color: var(--ivory); }
+
+/* facts band: only facts already stated on the site */
+.facts-band { background: var(--navy); color: var(--ivory); padding-block: 44px; }
+.facts-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 28px 24px; }
+.facts-grid li { border-top: 3px solid var(--ivory); padding-top: 14px; }
+.fact-big { display: block; font-weight: 700; font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem); line-height: 1.05; letter-spacing: -.02em; }
+.fact-label { display: block; margin-top: 10px; font-size: .9375rem; line-height: 1.4; max-width: 30ch; }
+@media (min-width: 560px) { .facts-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .facts-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } .facts-band { padding-block: 56px; } }
+main .fact-label, main .fact-big { text-align: left; }
+
+/* chips, used by the home finder and the Services filter */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
+.chip { min-height: 48px; padding: 0 18px; border: 2px solid var(--navy); background: transparent; color: var(--navy); font: 700 .9375rem/1.2 "Space Grotesk", Arial, sans-serif; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--navy); color: var(--ivory); }
+@media (hover: hover) { .chip:hover { background: var(--navy); color: var(--ivory); } }
+
+/* home finder */
+.finder { padding-block: clamp(40px, 6vw, 72px) clamp(32px, 5vw, 56px); }
+.finder h2 { margin-bottom: 8px; }
+.finder-hint { color: var(--ink-2); margin: 18px 0 0; }
+.need-panel { margin-top: 22px; padding: 24px; background: var(--white); border-left: 6px solid var(--navy); }
+.need-panel h3 { margin-bottom: 10px; }
+.need-list { list-style: none; margin: 0 0 20px; padding: 0; border-bottom: 1px solid var(--rule); }
+.need-list li { border-top: 1px solid var(--rule); }
+.need-list a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; text-decoration: none; font-weight: 700; }
+.need-list a::after { content: "\2192"; flex: none; }
+@media (hover: hover) { .need-list a:hover { text-decoration: underline; text-underline-offset: 4px; } }
+main .need-list li, main .need-panel p { text-align: left; }
+@media (min-width: 760px) { .need-panel { padding: 28px 32px; max-width: 46rem; } }
+
+/* service cards on the home page */
+.card-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .card-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.svc-card { background: var(--ivory); border-top: 4px solid var(--navy); }
+.svc-card-link { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 24px 22px 22px; text-decoration: none; }
+.svc-icon { display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: var(--navy); margin-bottom: 6px; }
+.svc-card .icon { width: 32px; height: 32px; fill: var(--ivory); }
+.svc-card h3 { font-size: 1.25rem; }
+main .svc-card p { margin: 0; text-align: left; flex: 1; color: var(--navy); }
+.card-cue { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-weight: 700; }
+.card-cue::after { content: "\2192"; }
+@media (hover: hover) {
+  .svc-card:hover { background: var(--navy); color: var(--ivory); }
+  .svc-card:hover .svc-icon { background: var(--ivory); }
+  .svc-card:hover .icon { fill: var(--navy); }
+  .svc-card:hover p { color: var(--ivory); }
+}
+.svc-card:focus-within { background: var(--navy); color: var(--ivory); }
+.svc-card:focus-within .svc-icon { background: var(--ivory); }
+.svc-card:focus-within .icon { fill: var(--navy); }
+.svc-card:focus-within p { color: var(--ivory); }
+.svc-card-link:focus-visible { outline-color: var(--ivory); outline-offset: -6px; }
+.svc-card .folio-no { color: inherit; opacity: .8; }
+
+/* how we work on navy: each step's top rail fills in as you reach it */
+.bg-navy .process { border-top: 0; column-gap: 24px; }
+.bg-navy .process li { border-bottom: 0; border-top: 4px solid var(--ivory); }
+.js .bg-navy .process li:not(.is-on) { border-top-color: rgba(244, 241, 234, .28); }
+.bg-navy .process p { color: var(--ivory); }
+.bg-navy .process .step-no { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-bottom: 10px; border: 2px solid var(--ivory); background: var(--ivory); color: var(--navy); }
+.js .bg-navy .process li:not(.is-on) .step-no { background: transparent; color: var(--ivory); }
+@media (prefers-reduced-motion: no-preference) { .bg-navy .process li, .bg-navy .process .step-no { transition: border-color .4s ease-out, background-color .4s ease-out, color .4s ease-out; } }
+
+/* services filter and FAQ search */
+.svc-tools, .faq-tools { margin-bottom: 28px; display: grid; gap: 16px; }
+.svc-tools .chips { margin: 0; }
+.svc-search { display: flex; flex-direction: column; gap: 6px; max-width: 30rem; font-weight: 700; font-size: .875rem; }
+.svc-search input { min-height: 52px; padding: 0 14px; border: 2px solid var(--navy); border-radius: 0; background: var(--white); color: var(--navy); font: 400 1rem "Space Grotesk", Arial, sans-serif; }
+.svc-count { margin: 0; color: var(--ink-2); font-size: .9375rem; min-height: 1.4em; }
+.svc-none { padding: 24px 0; }
+.service-list { border-top: 3px solid var(--navy); }
+.service:first-child { border-top: 0; }
+
+/* buttons: clear hover and press */
+@media (hover: hover) {
+  .btn-primary:hover { background: #173367; border-color: #173367; }
+  .btn-ghost:hover { background: var(--navy); color: var(--ivory); }
+  .btn-light:hover { background: var(--white); border-color: var(--white); }
+  .btn-ghost-light:hover { background: var(--ivory); color: var(--navy); }
+}
+
+/* phone bar: Call and WhatsApp stay at the bottom on phones */
+.call-bar { display: none; }
+@media (max-width: 639px) {
+  .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; background: var(--navy); border-top: 1px solid rgba(244, 241, 234, .35); padding-bottom: env(safe-area-inset-bottom); }
+  .call-bar a { display: flex; align-items: center; justify-content: center; min-height: 56px; color: var(--ivory); text-decoration: none; font-weight: 700; }
+  .call-bar a + a { background: var(--ivory); color: var(--navy); }
+  .call-bar a:focus-visible { outline-color: var(--ivory); outline-offset: -6px; }
+  .call-bar a + a:focus-visible { outline-color: var(--navy); }
+  body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+}
+@media print { .call-bar { display: none; } }
+
+/* soft page change and a reading-progress line under the header (browsers without support just skip them) */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+@media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }
+@keyframes read-progress { to { transform: scaleX(1); } }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .site-header::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 100%; height: 3px; background: var(--navy); transform: scaleX(0); transform-origin: 0 50%; animation: read-progress linear both; animation-timeline: scroll(root); }
+  }
+}
+/* phones: cards are compact, icon beside the text, so six cards do not make a very long page */
+@media (max-width: 639px) {
+  .svc-card-link { display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; row-gap: 4px; padding: 18px 16px; }
+  .svc-icon { grid-row: 1 / span 3; width: 48px; height: 48px; margin: 0; }
+  .svc-card .icon { width: 28px; height: 28px; }
+  .svc-card .folio-no { display: none; }
+  .svc-card h3 { font-size: 1.125rem; }
+  .card-cue { margin-top: 6px; }
+}
+
+/* 2026-11-18: a service slides open instead of jumping. Browsers that cannot animate it just open at once. */
+@keyframes svc-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .svc-more[open] > :not(summary) { animation: svc-in .3s ease-out both; }
+  .svc-cue::after { transition: transform .25s ease-out; }
+}
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root { interpolate-size: allow-keywords; }
+    .svc-more::details-content { block-size: 0; overflow: clip; transition: block-size .3s ease-out, content-visibility .3s allow-discrete; }
+    .svc-more[open]::details-content { block-size: auto; }
+  }
+}
