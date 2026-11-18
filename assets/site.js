@@ -26,6 +26,14 @@
     });
   }
 
+  // Header stays at the top; a thin shadow shows once the page has scrolled.
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 4); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   // FAQ: the name="faq" attribute already makes browsers keep one answer open; this does the same
   // for older browsers that ignore it.
   var faqs = document.querySelectorAll('.faq details');
