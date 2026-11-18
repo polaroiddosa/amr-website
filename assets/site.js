@@ -7,6 +7,16 @@
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+    // Tap or click anywhere outside the open menu closes it.
+    function closeMenu() {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    document.addEventListener('click', function (ev) {
+      if (!nav.classList.contains('open')) return;
+      if (nav.contains(ev.target) || toggle.contains(ev.target)) return;
+      closeMenu();
+    });
     document.addEventListener('keydown', function (ev) {
       if (ev.key === 'Escape' && nav.classList.contains('open')) {
         nav.classList.remove('open');
@@ -25,6 +35,17 @@
       faqs.forEach(function (o) { if (o !== d) o.open = false; });
     });
   });
+
+  // Services: open the service a link points to (menu table of contents, links from other pages).
+  function openFromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    var sec = document.getElementById(id);
+    var d = sec && sec.querySelector('details.svc-more');
+    if (d) d.open = true;
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 
   var form = document.getElementById('enquiry');
   if (!form) return;
