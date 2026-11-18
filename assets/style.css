@@ -367,3 +367,17 @@ main .lede, .page-head .lede { hyphens: manual; text-align: left; }
 .contact-grid a:not(.btn), .contact-grid a:not(.btn):hover, .contact-grid a:not(.btn):focus-visible { text-decoration: none; }
 /* Careers, Privacy, Terms: email links without underline (client request, 2026-11-17) */
 a.link[href^="mailto:"], a.link[href^="mailto:"]:hover, a.link[href^="mailto:"]:focus-visible { text-decoration: none; }
+
+/* 2026-11-18: small map under the Contact buttons, left of the enquiry form */
+.map-embed { display: block; width: 100%; height: clamp(220px, 22vw, 240px); margin-top: 28px; border: 0; background: var(--ivory); }
+
+/* 2026-11-18: home page shows six services in full; the other nine are links */
+.also-services { margin-top: 28px; }
+.also-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; max-width: none; }
+.also-links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; border-bottom: 2px solid var(--rule); font-weight: 500; }
+.also-links a:hover { border-bottom-color: var(--navy); }
+.also-services + .more { margin-top: 24px; }
+@media (max-width: 639px) {
+  .also-links { display: block; border-top: 1px solid var(--rule); }
+  .also-links a { display: flex; width: 100%; padding-block: 6px; border-bottom: 1px solid var(--rule); }
+}
