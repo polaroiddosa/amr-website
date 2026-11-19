@@ -44,6 +44,16 @@
     });
   });
 
+  // Services on phones: one service open at a time, like the FAQ (client's wish via Nandaprayag, 2026-11-19). Wide screens keep many open.
+  var svcs = document.querySelectorAll('details.svc-more');
+  var phoneMq = window.matchMedia ? window.matchMedia('(max-width: 639px)') : null;
+  svcs.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open || !phoneMq || !phoneMq.matches) return;
+      svcs.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
   // Services: open the service a link points to (links from other pages). If the filter is hiding it, clear the filter first.
   var resetServiceFilter = function () {};
   function openFromHash() {

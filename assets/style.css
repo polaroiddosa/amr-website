@@ -475,9 +475,10 @@ main .svc-card p { margin: 0; text-align: left; flex: 1; color: var(--navy); }
 }
 
 /* WhatsApp: one floating "Chat on WhatsApp" button (client reply of 2026-11-19) */
-.wa-float { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; background: var(--navy); color: var(--ivory); border: 1px solid rgba(244, 241, 234, .55); border-radius: 999px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); }
-.wa-float:hover { background: var(--ivory); color: var(--navy); border-color: var(--navy); }
-.wa-float:focus-visible { outline: 3px solid var(--ivory); outline-offset: 3px; box-shadow: 0 0 0 6px var(--navy); }
+.wa-float { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: #25D366; color: #fff; border-radius: 50%; box-shadow: 0 4px 14px rgba(0, 0, 0, .3); text-decoration: none; }
+.wa-float svg { display: block; }
+.wa-float:hover { background: #1ebe5b; }
+.wa-float:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
 @media print { .wa-float { display: none; } }
 
 /* soft page change and a reading-progress line under the header (browsers without support just skip them) */
