@@ -474,17 +474,11 @@ main .svc-card p { margin: 0; text-align: left; flex: 1; color: var(--navy); }
   .btn-ghost-light:hover { background: var(--ivory); color: var(--navy); }
 }
 
-/* phone bar: Call and WhatsApp stay at the bottom on phones */
-.call-bar { display: none; }
-@media (max-width: 639px) {
-  .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; background: var(--navy); border-top: 1px solid rgba(244, 241, 234, .35); padding-bottom: env(safe-area-inset-bottom); }
-  .call-bar a { display: flex; align-items: center; justify-content: center; min-height: 56px; color: var(--ivory); text-decoration: none; font-weight: 700; }
-  .call-bar a + a { background: var(--ivory); color: var(--navy); }
-  .call-bar a:focus-visible { outline-color: var(--ivory); outline-offset: -6px; }
-  .call-bar a + a:focus-visible { outline-color: var(--navy); }
-  body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
-}
-@media print { .call-bar { display: none; } }
+/* WhatsApp: one floating "Chat on WhatsApp" button (client reply of 2026-11-19) */
+.wa-float { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; background: var(--navy); color: var(--ivory); border: 1px solid rgba(244, 241, 234, .55); border-radius: 999px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); }
+.wa-float:hover { background: var(--ivory); color: var(--navy); border-color: var(--navy); }
+.wa-float:focus-visible { outline: 3px solid var(--ivory); outline-offset: 3px; box-shadow: 0 0 0 6px var(--navy); }
+@media print { .wa-float { display: none; } }
 
 /* soft page change and a reading-progress line under the header (browsers without support just skip them) */
 @view-transition { navigation: auto; }
